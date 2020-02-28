@@ -1,4 +1,4 @@
 # Sonification MCT
-Weather sonification from camera
+Bring music to weather.
 
 Gaute, Aleksander, Jarle and Iggy
