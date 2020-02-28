@@ -11,16 +11,22 @@ screen_height = root.winfo_screenheight() - 1
 inputdimx = 300
 inputdimy = 300
 
-while True: #gets the previous frames rgbavg values.
-    red1 = []
-    green1 = []
-    blue1 = []
+while True:
     frame_babel = ImageGrab.grab(bbox=(0, 0, inputdimx, inputdimy))
     frame_array = np.array(frame_babel)
     frame = cv2.cvtColor(frame_array, cv2.COLOR_BGR2RGB)
- 
+
+    red1 = []
+    green1 = []
+    blue1 = []
+    red2 = []
+    green2 = []
+    blue2 = []
+    red3 = []
+    green3 = []
+    blue3 = []
     for y1 in range(0, inputdimy): #First first third of the height
-        for x1 in range(0, (inputdimx/3 * 1)): #Second first third of the width
+        for x1 in range(0, round((inputdimx/3 * 1))): #Second first third of the width
             rgb1 = frame[y1, x1]
             red1.append(rgb1[0])
             green1.append(rgb1[1])
@@ -45,7 +51,7 @@ while True: #gets the previous frames rgbavg values.
 
     for y1 in range(0, inputdimy): #Second first third of the height.
         for x3 in range(((inputdimx/3) * 2), (inputdimx/3 * 3)): #Second first third of the width
-            rgb3 = frame[y3, x3]
+            rgb3 = frame[y1, x3]
             red3.append(rgb3[0])
             green3.append(rgb3[1])
             blue3.append(rgb3[2])
@@ -59,8 +65,7 @@ while True: #gets the previous frames rgbavg values.
     section.append(rgbavg1)
     section.append(rgbavg2)
     section.append(rgbavg3)
-    
-    print(section)
+
 
 
 # Gjennomsnitts verdier i soner. 
