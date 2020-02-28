@@ -11,6 +11,8 @@ screen_height = root.winfo_screenheight() - 1
 inputdimx = 300
 inputdimy = 300
 
+
+
 while True:
     frame_babel = ImageGrab.grab(bbox=(0, 0, inputdimx, inputdimy))
     frame_array = np.array(frame_babel)
@@ -19,10 +21,10 @@ while True:
     first_row_rgb_avg = utils.screensplit_rgb_avg(frame, 1)
     second_row_rgb_avg = utils.screensplit_rgb_avg(frame, 2)
     third_row_rgb_avg = utils.screensplit_rgb_avg(frame, 3)
+    
+    print(first_row_rgb_avg) 
+    #screen_rgb_avg_array
 
-    screen_rgb_avg_array = np.array((first_row_rgb_avg), (second_row_rgb_avg), (third_row_rgb_avg))
 
-    print(screen_rgb_avg_array)
-
-# If frame[y, x].all() == frame[y, x-1].all():  #Remove consecutive duplicate indexes.
+# If frame[y, x].all() == frame[y, x-1].all(): Remove consecutive duplicate indexes.
 # Histograms based on avg. 

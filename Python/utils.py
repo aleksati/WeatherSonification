@@ -1,9 +1,3 @@
-def find_max(numbers):
-    max = numbers[0]
-    for count in numbers:
-        if count > max:
-            max = count
-    return max
 
 
 def average(rgblist):
@@ -29,16 +23,21 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     section = []
     
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #First first third of the height
-        for x1 in range(0, round(int((source.shape[0]) / 3))): #Second first third of the width
+        for x1 in range(0, round(int((source.shape[0]) / 3))):
             rgb1 = source[y1, x1]
             red1.append(rgb1[0])
             green1.append(rgb1[1])
             blue1.append(rgb1[2])
 
-    redavg1 = int(average(red1))
-    greenavg1 = int(average(green1))
-    blueavg1 = int(average(blue1))
+    redavg1 = average(red1)
+    greenavg1 = average(green1)
+    blueavg1 = average(blue1)
     rgbavg1 = [redavg1, greenavg1, blueavg1]
+
+    if rgbavg1 != duplicate_list1:
+        duplicate_list1 = rgbavg1
+    else:
+        rgbavg1 = []
 
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #Second first third of the height.
         for x2 in range(round(int(source.shape[0]) / 3), round(int((source.shape[0]) / 3) * 2 )): #Second first third of the width
@@ -47,9 +46,9 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
             green2.append(rgb2[1])
             blue2.append(rgb2[2])
 
-    redavg2 = int(average(red2))
-    greenavg2 = int(average(green2))
-    blueavg2 = int(average(blue2))
+    redavg2 = average(red2)
+    greenavg2 = average(green2)
+    blueavg2 = average(blue2)
     rgbavg2 = [redavg2, greenavg2, blueavg2]
 
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #Second first third of the height.
@@ -59,12 +58,13 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
             green3.append(rgb3[1])
             blue3.append(rgb3[2])
 
-    redavg3 = int(average(red3))
-    greenavg3 = int(average(green3))
-    blueavg3 = int(average(blue3))
+    redavg3 = average(red3)
+    greenavg3 = average(green3)
+    blueavg3 = average(blue3)
     rgbavg3 = [redavg3, greenavg3, blueavg3]
 
     section.append(rgbavg1)
     section.append(rgbavg2)
     section.append(rgbavg3)
+
     return section
