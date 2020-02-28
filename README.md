@@ -1,2 +1,2 @@
 # sonification MCT
-Weather radio
+Weather sonification from camera 
