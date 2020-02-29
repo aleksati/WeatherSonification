@@ -66,12 +66,12 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     return section
 
 
-def rgb2colortemp (rgbavgrow):
+def rgb2colortemp (rgbsection): # takes a matrix with 3 lists (rgb averages over a screen section) and output a list with one color temperature value for each list.
 
     temp = []
     for ele in range (0, 3):
-        RGB = np.array(rgbavgrow[ele])
-        XYZ = colour.sRGB_to_XYZ(RGB / 255)
+        sec_array = np.array(rgbsection[ele])
+        XYZ = colour.sRGB_to_XYZ(sec_array / 255)
         xy = colour.XYZ_to_xy(XYZ)
         CCT = colour.xy_to_CCT(xy, 'hernandez1999')
 
