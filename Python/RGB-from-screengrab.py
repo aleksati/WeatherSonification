@@ -4,27 +4,25 @@ import cv2
 import tkinter as tk
 import utils
 
-root = tk.Tk()
-screen_width = root.winfo_screenwidth() - 1
-screen_height = root.winfo_screenheight() - 1
-
+#specify smaller screen dim. Add the variables to ImageGrab like so: "ImageGrab.grab(bbox=(0, 0, inputdimx, inputdimy))"
 inputdimx = 300
 inputdimy = 300
 
-
-
 while True:
-    frame_babel = ImageGrab.grab(bbox=(0, 0, inputdimx, inputdimy))
+    frame_babel = ImageGrab.grab()
     frame_array = np.array(frame_babel)
-    frame = cv2.cvtColor(frame_array, cv2.COLOR_BGR2RGB)
+    frame = frame_array[:,:,:3] #Removes Alpha from RGBA
+    #print(frame[0])
+    #break
 
-    first_row_rgb_avg = utils.screensplit_rgb_avg(frame, 1)
+    #first_row_rgb_avg = utils.screensplit_rgb_avg(frame, 1)
+    #print(f'rgb-avg row 1 = {first_row_rgb_avg}')
+    #print(f'colortemp = {utils.rgb2colortemp(first_row_rgb_avg)}')
+
     second_row_rgb_avg = utils.screensplit_rgb_avg(frame, 2)
-    third_row_rgb_avg = utils.screensplit_rgb_avg(frame, 3)
-    
-    print(first_row_rgb_avg) 
-    #screen_rgb_avg_array
+    print(f'rgb-avg row 2 = {second_row_rgb_avg}')
+    print(f'colortemp = {utils.rgb2colortemp(second_row_rgb_avg)}')
 
-
-# If frame[y, x].all() == frame[y, x-1].all(): Remove consecutive duplicate indexes.
-# Histograms based on avg. 
+    #third_row_rgb_avg = utils.screensplit_rgb_avg(frame, 3)
+    #print(f'rgb-avg row 3 = {third_row_rgb_avg}')
+    #print(f'colortemp = {utils.rgb2colortemp(third_row_rgb_avg)}')

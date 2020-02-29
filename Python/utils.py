@@ -1,3 +1,5 @@
+import numpy as np
+import colour
 
 
 def average(rgblist):
@@ -9,7 +11,6 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
 
     source = ndarray
     dimscale = row_section_number
-    source.shape[0]
 
     red1 = []
     green1 = []
@@ -22,9 +23,9 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     blue3 = []
     section = []
     
-    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #First first third of the height
-        for x1 in range(0, round(int((source.shape[0]) / 3))):
-            rgb1 = source[y1, x1]
+    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
+        for x1 in range(0, round(int((source.shape[0]) / 3)) ):
+            rgb1 = source[x1, y1]
             red1.append(rgb1[0])
             green1.append(rgb1[1])
             blue1.append(rgb1[2])
@@ -34,14 +35,9 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     blueavg1 = average(blue1)
     rgbavg1 = [redavg1, greenavg1, blueavg1]
 
-    if rgbavg1 != duplicate_list1:
-        duplicate_list1 = rgbavg1
-    else:
-        rgbavg1 = []
-
-    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #Second first third of the height.
-        for x2 in range(round(int(source.shape[0]) / 3), round(int((source.shape[0]) / 3) * 2 )): #Second first third of the width
-            rgb2 = source[y1, x2]
+    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
+        for x2 in range(round(int(source.shape[0]) / 3), round(int((source.shape[0]) / 3) * 2 )):
+            rgb2 = source[x2, y1]
             red2.append(rgb2[0])
             green2.append(rgb2[1])
             blue2.append(rgb2[2])
@@ -51,13 +47,13 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     blueavg2 = average(blue2)
     rgbavg2 = [redavg2, greenavg2, blueavg2]
 
-    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ): #Second first third of the height.
-        for x3 in range(round((int(source.shape[0]) / 3) * 2), round(int((source.shape[0]) / 3) * 3 )): #Second first third of the width
-            rgb3 = source[y1, x3]
+    for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
+        for x3 in range(round((int(source.shape[0]) / 3) * 2), round(int((source.shape[0]) / 3) * 3)):
+            rgb3 = source[x3, y1]
             red3.append(rgb3[0])
             green3.append(rgb3[1])
             blue3.append(rgb3[2])
-
+            
     redavg3 = average(red3)
     greenavg3 = average(green3)
     blueavg3 = average(blue3)
@@ -68,3 +64,23 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
     section.append(rgbavg3)
 
     return section
+
+
+def rgb2colortemp (rgbavgrow):
+
+    temp = []
+    for ele in range (0, 3):
+        RGB = np.array(rgbavgrow[ele])
+        XYZ = colour.sRGB_to_XYZ(RGB / 255)
+        xy = colour.XYZ_to_xy(XYZ)
+        CCT = colour.xy_to_CCT(xy, 'hernandez1999')
+
+        temp.append(CCT)
+
+    colortemp = []
+    for i in range(0, 3):
+        value = int(round(temp[i]))
+        colortemp.append(value)
+    
+    return colortemp
+ 
