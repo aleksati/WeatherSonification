@@ -12,7 +12,9 @@ def Nmaxoflist(list1, N):
         for y in range(len(list1)):
             if list1[y] > max_value:
                 max_value = list1[y]
-        
+
+        # Since we delete indices from list1 to find multiple max numbers, we have to check-
+        # how many indices with lower values then the current one have been deleted and add that number to index writing in index_of_max_in_list.
         if len(index_of_max_in_list) == 0:
             index_of_max_in_list.append(list1.index(max_value))
         else:
@@ -21,9 +23,9 @@ def Nmaxoflist(list1, N):
                 if list1.index(max_value) > index_of_max_in_list[z]:
                     count = count + 1
             #print(count)
-            index_of_max_in_list.append(list1.index(max_value) + count) #if any values have been less than this value before! it shoould be minus that number.
+            index_of_max_in_list.append(list1.index(max_value) + count)
         
-        del list1[list1.index(max_value)] #list1.remove(max_value)
+        del list1[list1.index(max_value)]
         maxes.append(max_value)
 
     #print(f'max numbers {maxes} and where they are {index_of_max_in_list}')
