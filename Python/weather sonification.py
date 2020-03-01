@@ -24,7 +24,7 @@ while True:
 
     # Calculate average RGB values for 9 screen sections. From top left to bottom right. 
     screen_rgba_array = np.array(screen)
-    screen_rgb_array = screen_rgba_array[:,:,:3] # Removes Alpha from RGBA frame array
+    screen_rgb_array = screen_rgba_array[:,:,:3] # Removes Alpha from RGBA screen capture
 
     first_section_rgb_avg = utils.screensplit_rgb_avg(screen_rgb_array, 1)
     first_section_color_temp = utils.rgb2colortemp(first_section_rgb_avg)
@@ -47,6 +47,3 @@ while True:
 
     colortemp_list = first_section_color_temp + second_section_color_temp + third_section_color_temp
     #print(f'colortemp screen {colortemp_list}')
-
-
-

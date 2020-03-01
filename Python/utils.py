@@ -14,7 +14,7 @@ def Nmaxoflist(list1, N):
                 max_value = list1[y]
 
         # Since we delete indices from list1 to find multiple max numbers, we have to check-
-        # how many indices with lower values then the current one have been deleted and add that number to index writing in index_of_max_in_list.
+        # how many indices with lower values then the current one have been deleted and add that number to the index writing in index_of_max_in_list.
         if len(index_of_max_in_list) == 0:
             index_of_max_in_list.append(list1.index(max_value))
         else:
