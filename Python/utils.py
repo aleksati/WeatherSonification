@@ -1,13 +1,42 @@
 import numpy as np
 import colour
 
+# Finds the N largest values in a list.
+# Returns the index of the N biggest values, from highest to lowest. 
+def Nmaxoflist(list1, N):
+    maxes = []
+    index_of_max_in_list = []
 
+    for x in range(0, N):
+        max_value = 0
+        for y in range(len(list1)):
+            if list1[y] > max_value:
+                max_value = list1[y]
+        
+        if len(index_of_max_in_list) == 0:
+            index_of_max_in_list.append(list1.index(max_value))
+        else:
+            count = 0
+            for z in range(0, len(index_of_max_in_list)):
+                if list1.index(max_value) > index_of_max_in_list[z]:
+                    count = count + 1
+            #print(count)
+            index_of_max_in_list.append(list1.index(max_value) + count) #if any values have been less than this value before! it shoould be minus that number.
+        
+        del list1[list1.index(max_value)] #list1.remove(max_value)
+        maxes.append(max_value)
+
+    #print(f'max numbers {maxes} and where they are {index_of_max_in_list}')
+
+    return index_of_max_in_list
+
+# Average over a list.
 def average(rgblist):
     frame_color_average = int(round((sum(rgblist)) / len(rgblist)))
     return frame_color_average
 
-
-def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 2nd arguement = select which sections of rows to iterate on. 
+# 1st argument = ndarray, 2nd arguement = select which section to iterate on. 1, 2 or 3
+def screensplit_rgb_avg(ndarray, row_section_number): 
 
     source = ndarray
     dimscale = row_section_number
@@ -65,8 +94,8 @@ def screensplit_rgb_avg(ndarray, row_section_number): #1st argument = ndarray , 
 
     return section
 
-
-def rgb2colortemp (rgbsection): # takes a matrix with 3 lists (rgb averages over a screen section) and output a list with one color temperature value for each list.
+# Takes a matrix with 3 lists (rgb averages over a screen section) and output a list with one color temperature value for each list.
+def rgb2colortemp (rgbsection):
 
     temp = []
     for ele in range (0, 3):
