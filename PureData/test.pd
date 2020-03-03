@@ -1,0 +1,27 @@
+#N canvas 374 298 790 504 12;
+#X msg 31 23 10050 2000 2010 3080 2000 5000 1000 3050 9872;
+#X text 26 100 Volume?;
+#X text 441 50 Histogram avg.;
+#X msg 590 24 Time extract.;
+#X obj 59 166 unpack f f f f f f f f f, f 101;
+#X obj 60 266 t i i i i, f 46;
+#X text 165 451 pitch?;
+#X msg 60 327 set \$1;
+#X msg 60 350 0;
+#X obj 467 263 vsl 15 128 0 6000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 9600 1;
+#X msg 165 383 set \$1;
+#X msg 165 406 0;
+#X obj 60 304 expr if($f1 < 1500 \, 1 \, 0);
+#X obj 165 360 expr if($f1 > 1500 && $f1 < 3000 \, 1 \, 0 );
+#X text 25 74 Color temp. High values are COLD. low are HOT;
+#X text 24 49 first value = top left square etc...;
+#X msg 446 25 150;
+#X connect 4 0 5 0;
+#X connect 5 0 12 0;
+#X connect 5 1 13 0;
+#X connect 7 0 8 0;
+#X connect 9 0 5 0;
+#X connect 10 0 11 0;
+#X connect 12 0 7 0;
+#X connect 13 0 10 0;
