@@ -61,10 +61,8 @@ while True:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ip", default="127.0.0.1",
                         help="The ip of the OSC server")
-
     parser.add_argument("--port", type=int, default=8888,
                         help="The port the OSC server is listening on")
-
     args = parser.parse_args()
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
@@ -73,4 +71,4 @@ while True:
     client.send_message('/time', 'PUT VARIABLE HERE')
 
     break
-    time.sleep(0.4)
+    #time.sleep(0.4)
