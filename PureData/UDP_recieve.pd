@@ -1,0 +1,8 @@
+#N canvas 481 191 450 300 12;
+#X obj 91 91 mrpeach/udpreceive 8888;
+#X obj 91 129 mrpeach/unpackOSC;
+#X obj 91 166 mrpeach/routeOSC /filter;
+#X floatatom 91 201 5 0 0 0 - - -;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
