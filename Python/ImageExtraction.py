@@ -54,18 +54,18 @@ while True:
     colortemp_list = first_section_color_temp + second_section_color_temp + third_section_color_temp
     #print(f'colortemp screen {colortemp_list}')
 
-
-if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ip", default="127.0.0.1",
-        help="The ip of the OSC server")
+                        help="The ip of the OSC server")
 
     parser.add_argument("--port", type=int, default=8888,
-        help="The port the OSC server is listening on")
-    args = parser.parse_args()
+                        help="The port the OSC server is listening on")
 
+    args = parser.parse_args()
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-client.send_message('/colortemp', colortemp_list)
-client.send_message('/histogram_avg', histlist_x_values_avg)
-client.send_message('/time', 'PUT VARIABLE HERE')
+    client.send_message('/colortemp', colortemp_list)
+    client.send_message('/histogram_avg', histlist_x_values_avg)
+    client.send_message('/time', 'PUT VARIABLE HERE')
+
+    #time.sleep(0.4)
