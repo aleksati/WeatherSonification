@@ -1,11 +1,11 @@
 from PIL import ImageGrab
-#import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import tkinter as tk
 import utils
 from pythonosc import udp_client
 import argparse
+import datetime
 
 # Specify smaller screen dim. If so, add the variables to ImageGrab: "ImageGrab.grab(bbox=(0, 0, inputdimx, inputdimy))"
 inputdimx = 300
@@ -14,21 +14,21 @@ inputdimy = 300
 while True:
 
     # Grayscale histogram. outputs 255 numbers which correspond to the X axis, the value of every number corresponds to the Y axis.
+
     screen = ImageGrab.grab()
     r, g, b, a = screen.split() 
     len(r.histogram())
     histlist = r.histogram()
 
-    print(histlist)
-
     # Calculate where the peaks are in the histogram.
     N = 10 # Specify how many of the histograms largest Y-values to extract 
     histlist_x_values = utils.Nmaxoflist(histlist, N)
     histlist_x_values_avg = utils.average(histlist_x_values)
-    print(f'The {N} largest Y-values in the histogram are located at: {histlist_x_values} on the x-axis.')
-    print(f'The average of these values are = {histlist_x_values_avg}')
+    #print(f'The {N} largest Y-values in the histogram are located at: {histlist_x_values} on the x-axis.')
+    #print(f'The average of these values are = {histlist_x_values_avg}')
 
     # Calculate average RGB values for 9 screen sections. From top left to bottom right. 
+
     screen_rgba_array = np.array(screen)
     screen_rgb_array = screen_rgba_array[:,:,:3] # Removes Alpha from RGBA screen capture
 
@@ -49,11 +49,13 @@ while True:
 
     #Generates array of screen color temp. low values = warm colors, high values = cold colors.
     colortemp_array = np.array((first_section_color_temp, second_section_color_temp, third_section_color_temp))
-    print(colortemp_array)
+    #print(colortemp_array)
 
     colortemp_list = first_section_color_temp + second_section_color_temp + third_section_color_temp
     #print(f'colortemp screen {colortemp_list}')
 
+
+    #Send UDP to PureData
     parser = argparse.ArgumentParser()
     parser.add_argument("--ip", default="127.0.0.1",
                         help="The ip of the OSC server")
@@ -68,4 +70,5 @@ while True:
     client.send_message('/histogram_avg', histlist_x_values_avg)
     client.send_message('/time', 'PUT VARIABLE HERE')
 
-    #time.sleep(0.4)
+    break
+    time.sleep(0.4)

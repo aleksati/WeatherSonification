@@ -1,0 +1,25 @@
+#N canvas 155 76 633 406 12;
+#X obj 91 91 mrpeach/udpreceive 8888;
+#X obj 91 117 mrpeach/unpackOSC;
+#X obj 91 146 mrpeach/routeOSC /colortemp /histogram_avg /time, f
+57;
+#X obj 91 257 netsend -u;
+#X msg 357 212 connect 193.157.238.167 8001;
+#X text 361 191 Client sin IP + port;
+#X obj 91 211 prepend send;
+#X obj 91 179 prepend colortemp;
+#X obj 223 179 prepend histogram;
+#X obj 338 345 route histogram colortemp;
+#X obj 223 213 prepend send;
+#X text 333 291 On the other side:;
+#X obj 338 316 netreceive -u 8001;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 2 1 8 0;
+#X connect 4 0 3 0;
+#X connect 6 0 3 0;
+#X connect 7 0 6 0;
+#X connect 8 0 10 0;
+#X connect 10 0 3 0;
+#X connect 12 0 9 0;
