@@ -24,8 +24,9 @@ while True:
     # Calculate where the peaks are in the histogram.
     N = 10 # Specify how many of the histograms largest Y-values to extract 
     histlist_x_values = utils.Nmaxoflist(histlist, N)
+    histlist_x_values_avg = utils.average(histlist_x_values)
     print(f'The {N} largest Y-values in the histogram are located at: {histlist_x_values} on the x-axis.')
-    print(f'The average of these values are = {utils.average(histlist_x_values)}')
+    print(f'The average of these values are = {histlist_x_values_avg}')
 
     # Calculate average RGB values for 9 screen sections. From top left to bottom right. 
     screen_rgba_array = np.array(screen)
@@ -65,6 +66,6 @@ if __name__ == "__main__":
 
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-client.send_message('/colortemp_list', 'PUT VARIABLE HERE')
-client.send_message('/histogram', 'PUT VARIABLE HERE')
+client.send_message('/colortemp', colortemp_list)
+client.send_message('/histogram_avg', histlist_x_values_avg)
 client.send_message('/time', 'PUT VARIABLE HERE')
