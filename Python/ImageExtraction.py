@@ -10,12 +10,11 @@ import datetime
 inputdimx = 300
 inputdimy = 300
 
-current_time = utils.time('CET')
-
 while True:
 
-    # Grayscale histogram. outputs 255 numbers which correspond to the X axis, the value of every number corresponds to the Y axis.
+    current_time = int(utils.time('CET'))
 
+    # Grayscale histogram. outputs 255 numbers which correspond to the X axis, the value of every number corresponds to the Y axis.
     screen = ImageGrab.grab()
     r, g, b, a = screen.split() 
     len(r.histogram())
@@ -49,13 +48,14 @@ while True:
     #print(f'rgb-avg section 3 = {third_section_rgb_avg}')
     #print(f'colortemp section 3 = {third_section_color_temp}')
 
-    #Generates array of screen color temp. low values = warm colors, high values = cold colors.
-    colortemp_array = np.array((first_section_color_temp, second_section_color_temp, third_section_color_temp))
+    #Generate array of screen color temp. low values = warm colors, high values = cold colors.
+    #colortemp_array = np.array((first_section_color_temp, second_section_color_temp, third_section_color_temp))
     #print(colortemp_array)
 
     colortemp_list = first_section_color_temp + second_section_color_temp + third_section_color_temp
     #print(f'colortemp screen {colortemp_list}')
 
+    colortemp_avg = utils.average(colortemp_list)
 
     #Send UDP to PureData
     parser = argparse.ArgumentParser()
@@ -68,7 +68,8 @@ while True:
 
     client.send_message('/colortemp', colortemp_list)
     client.send_message('/histogram_avg', histlist_x_values_avg)
-    client.send_message('/time', 'PUT VARIABLE HERE')
+    client.send_message('/time', current_time)
+    client.send_message('/colortemp_avg', colortemp_avg)
 
     break
     #time.sleep(0.4)
