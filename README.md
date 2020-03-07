@@ -13,7 +13,7 @@ This repo covers the color/weather extraction process in particular.
 
 The frame extraction is based on pythons PIL and color-science libraries in particular, and reads consecutive frame from your computer screen. 
 
-The program extracts weather information by collecting color temperature values based on RGB-averages from nine equally large sections on your screen (as seen in the image below), grayscale histogram information (if the enitre image is darker or brighter on average) and time values from a spesific timezone. This data gives you a good indication of what the weather is like and what the image/camera feed actually looks like.
+The program extracts weather information by collecting color temperature values based on RGB-averages from nine equally large sections on your screen (as seen in the image below), color temperature average from entire image, grayscale histogram information (if the enitre image is darker or brighter on average) and time values from a spesific timezone. This data gives you a good indication of what the weather is like and what the image/camera feed actually looks like.
 
 ![one city](img/onecity.png)
 
