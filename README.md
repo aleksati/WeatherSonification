@@ -19,7 +19,7 @@ The program extracts weather information by collecting color temperature values 
 
 Additionally, the script features code to easily send your data via UDP to a specific local port for further processing. 
 
-## Dependecies
+## Packages needed
 
 - PIL (Pillow)
 - numpy
