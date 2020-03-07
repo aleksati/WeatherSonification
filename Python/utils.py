@@ -59,9 +59,18 @@ def screensplit_rgb_avg(ndarray, row_section_number):
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
         for x1 in range(0, round(int((source.shape[0]) / 3)) ):
             rgb1 = source[x1, y1]
-            red1.append(rgb1[0])
-            green1.append(rgb1[1])
-            blue1.append(rgb1[2])
+            if rgb1[0] > 254:
+                red1.append(254)
+            else:
+                red1.append(rgb1[0])
+            if rgb1[1] > 254:
+                green1.append(254)
+            else:
+                green1.append(rgb1[1])
+            if rgb1[2] > 254:
+                blue1.append(254)
+            else:
+                blue1.append(rgb1[2])
 
     redavg1 = average(red1)
     greenavg1 = average(green1)
@@ -71,9 +80,18 @@ def screensplit_rgb_avg(ndarray, row_section_number):
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
         for x2 in range(round(int(source.shape[0]) / 3), round(int((source.shape[0]) / 3) * 2 )):
             rgb2 = source[x2, y1]
-            red2.append(rgb2[0])
-            green2.append(rgb2[1])
-            blue2.append(rgb2[2])
+            if rgb2[0] > 254:
+                red2.append(254)
+            else:
+                red2.append(rgb2[0])
+            if rgb2[1] > 254:
+                green2.append(254)
+            else:
+                green2.append(rgb2[1])
+            if rgb2[2] > 254:
+                blue2.append(254)
+            else:
+                blue2.append(rgb2[2])
 
     redavg2 = average(red2)
     greenavg2 = average(green2)
@@ -83,9 +101,18 @@ def screensplit_rgb_avg(ndarray, row_section_number):
     for y1 in range(round(int(((source.shape[1]) / 3) * (dimscale - 1))), round(int(((source.shape[1]) / 3) * dimscale)) ):
         for x3 in range(round((int(source.shape[0]) / 3) * 2), round(int((source.shape[0]) / 3) * 3)):
             rgb3 = source[x3, y1]
-            red3.append(rgb3[0])
-            green3.append(rgb3[1])
-            blue3.append(rgb3[2])
+            if rgb3[0] > 254:
+                red3.append(254)
+            else:
+                red3.append(rgb3[0])
+            if rgb3[1] > 254:
+                green3.append(254)
+            else:
+                green3.append(rgb3[1])
+            if rgb3[2] > 254:
+                blue3.append(254)
+            else:
+                blue3.append(rgb3[2])
             
     redavg3 = average(red3)
     greenavg3 = average(green3)

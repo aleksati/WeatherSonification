@@ -1,9 +1,0 @@
-#N canvas 534 187 622 454 12;
-#X obj 91 91 mrpeach/udpreceive 8888;
-#X obj 91 129 mrpeach/unpackOSC;
-#X floatatom 91 201 5 0 0 0 - - -;
-#X obj 91 166 mrpeach/routeOSC /colortemp_list /histlist_x_values /time
-;
-#X connect 0 0 1 0;
-#X connect 1 0 3 0;
-#X connect 3 0 2 0;
