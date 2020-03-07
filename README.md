@@ -2,7 +2,7 @@
 
 > ## Sonification Project
 
-> Make music from the weather! This was the objective of our MCT sonification project, presented at UiO Mar 7, 2020. The idea was to essentially sonify the weather at based on online webcam live-feeds and spatialized audio. This was a collaborative project by:
+> Make music with the weather! This was the objective of our MCT sonification project, presented at UiO Mar 7, 2020. The idea was to essentially sonify the weather at based on online webcam live-feeds and spatialized audio. This was a collaborative project by:
 > 
 > Jarle Foldeson Steinhovden, Aleksander Tidemann, Gaute Timian Dahl Wardenær & Tom Ignatius Wee  
 
