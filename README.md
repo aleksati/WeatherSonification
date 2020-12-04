@@ -3,7 +3,7 @@
 
 ## Color extraction
 
-The code splits your screen into 9 sections and extracts information (color temperature, RGB-values, histogram, Time-zone, coordiantes etc.). This data gave us an interesting indication of what the weather was like and what the image/camera feed looked like. This was then sent to Pure Data via UDP and sonified.
+The code splits your screen into 9 sections and extracts information (color temperature, RGB-values, histogram, Time-zone, coordiantes etc.). The data is then sent to Pure Data via UDP for sonification.
 
 ![one city](onecity.png) 
 
