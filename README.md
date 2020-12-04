@@ -3,7 +3,7 @@
 
 ## Color extraction
 
-The frame extraction is based on pythons PIL and color-science libraries in particular and reads consecutive frames from your computer screen. The program extracts weather information by collecting color temperature values based on RGB-averages from nine equally large sections on your screen (as seen in the image below), color temperature average from the entire image, grayscale histogram information (if the entire image is darker or brighter on average) and time values from a specific timezone. This data gives you a "good" indication of what the weather is like and what the image/camera feed looks like.
+The code splits your screen into 9 sections and extracts information (color temperature, RGB-values, histogram, Time-zone, coordiantes etc.). This data gave us an interesting indication of what the weather was like and what the image/camera feed looked like. This was then sent to Pure Data via UDP and sonified.
 
 ![one city](onecity.png) 
 
